@@ -1,7 +1,5 @@
-// /src/components/Login.js
-
 import React, { useState } from 'react';
-import { login } from '../services/api'; // Import the login function from api.js
+import { login } from '../services/api';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -13,13 +11,12 @@ const Login = ({ onLogin }) => {
     setError('');
 
     try {
-      const { token, studentId } = await login(email, password); // Destructure token and studentId
+      const { token, studentId } = await login(email, password);
       console.log('Logged in with token:', token);
-      
-      // Store both token and studentId in sessionStorage
+
       sessionStorage.setItem('authToken', token);
       sessionStorage.setItem('studentId', studentId);
-      
+
       onLogin(); // Notify App.js to update login state and show the Dashboard
     } catch (err) {
       setError('Login failed: Invalid credentials.');
