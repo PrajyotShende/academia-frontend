@@ -1,9 +1,9 @@
-// /src/components/login.js
+// /src/components/Login.js
 
 import React, { useState } from 'react';
 import { login } from '../services/api'; // Import the login function from api.js
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,8 +15,8 @@ const Login = () => {
     try {
       const token = await login(email, password);
       console.log('Logged in with token:', token);
-      // You can now use the token to store in localStorage or use in further requests
-      // Redirect user to dashboard or home page
+      localStorage.setItem('authToken', token); // Store token in localStorage
+      onLogin(); // Notify App.js to update login state and show the Dashboard
     } catch (err) {
       setError('Login failed: Invalid credentials.');
     }

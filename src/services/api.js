@@ -1,35 +1,35 @@
 // /src/services/api.js
 
 export const login = async (email, password) => {
-  const loginUrl = 'http://localhost:8080/api/student/login'; // Replace with your actual login URL
+  const loginUrl = 'http://localhost:8080/api/student/login';
 
   const loginData = {
-    email_id: email,  // Dynamic email provided by user
-    Password: password  // Dynamic password provided by user
+    email_id: email,  
+    Password: password  
   };
 
   try {
     const response = await fetch(loginUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',  // Setting the content type as JSON
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(loginData),  // Converting JavaScript object to JSON string
+      body: JSON.stringify(loginData),
     });
 
     if (!response.ok) {
       throw new Error('Login failed: Invalid credentials or server error');
     }
 
-    const data = await response.text();  // Use .text() to capture the plain JWT token
+    const data = await response.text();
     console.log('JWT Token:', data);
 
-    // Save the token in localStorage or sessionStorage for future requests
-    localStorage.setItem('authToken', data);  // Saving token in localStorage
+    // Use sessionStorage instead of localStorage
+    sessionStorage.setItem('authToken', data);
 
-    return data;  // Return the token, in case you need it elsewhere
+    return data;
   } catch (error) {
     console.error('Error during login:', error);
-    throw error;  // Throw error to be caught in your component or UI
+    throw error;
   }
 };
