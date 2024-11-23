@@ -13,9 +13,13 @@ const Login = ({ onLogin }) => {
     setError('');
 
     try {
-      const token = await login(email, password);
+      const { token, studentId } = await login(email, password); // Destructure token and studentId
       console.log('Logged in with token:', token);
-      localStorage.setItem('authToken', token); // Store token in localStorage
+      
+      // Store both token and studentId in sessionStorage
+      sessionStorage.setItem('authToken', token);
+      sessionStorage.setItem('studentId', studentId);
+      
       onLogin(); // Notify App.js to update login state and show the Dashboard
     } catch (err) {
       setError('Login failed: Invalid credentials.');

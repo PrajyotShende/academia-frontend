@@ -1,3 +1,5 @@
+// /src/App.js
+
 import React, { useState, useEffect } from 'react';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -5,11 +7,12 @@ import Dashboard from './components/Dashboard';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check if token is already present in localStorage when the app loads
+  // Check if token and studentId are already present in sessionStorage when the app loads
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      setIsLoggedIn(true); // Token exists, mark as logged in
+    const token = sessionStorage.getItem('authToken');
+    const studentId = sessionStorage.getItem('studentId');
+    if (token && studentId) {
+      setIsLoggedIn(true); // Token and studentId exist, mark as logged in
     }
   }, []);  // Empty dependency array means this runs once when the component mounts
 
@@ -18,7 +21,8 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken');  // Clear the token from localStorage
+    sessionStorage.removeItem('authToken');  // Clear the token from sessionStorage
+    sessionStorage.removeItem('studentId');  // Clear the studentId from sessionStorage
     setIsLoggedIn(false);  // Update state to log out the user
   };
 
