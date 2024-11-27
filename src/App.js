@@ -2,25 +2,34 @@ import React, { useState, useEffect } from 'react';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
-const App = () => {
+const App = () => 
+{
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const token = sessionStorage.getItem('authToken');
-    const studentId = sessionStorage.getItem('studentId');
-    if (token && studentId) {
-      setIsLoggedIn(true); // If token and studentId are available, set as logged in
+  useEffect(() => 
+  {
+  
+    const token = localStorage.getItem('authToken');
+
+    const studentId = localStorage.getItem('studentId');
+    
+    if (token && studentId) 
+    {
+      setIsLoggedIn(true);
     }
+
   }, []);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);  // Mark the user as logged in
+  const handleLogin = () => 
+  {
+    setIsLoggedIn(true);  
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('studentId');
-    setIsLoggedIn(false);  // Mark the user as logged out
+  const handleLogout = () => 
+  {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('studentId');
+    setIsLoggedIn(false);  
   };
 
   return (
@@ -29,7 +38,8 @@ const App = () => {
         <Login onLogin={handleLogin} />
       ) : (
         <Dashboard onLogout={handleLogout} />
-      )}
+      )
+      }
     </div>
   );
 };

@@ -6,19 +6,23 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => 
+  {
     e.preventDefault();
     setError('');
 
-    try {
+    try 
+    {
       const { token, studentId } = await login(email, password);
       console.log('Logged in with token:', token);
 
-      sessionStorage.setItem('authToken', token);
-      sessionStorage.setItem('studentId', studentId);
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('studentId', studentId);
 
-      onLogin(); // Notify App.js to update login state and show the Dashboard
-    } catch (err) {
+      onLogin();
+    } 
+    catch(err) 
+    {
       setError('Login failed: Invalid credentials.');
     }
   };

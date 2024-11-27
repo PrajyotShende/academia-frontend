@@ -1,6 +1,4 @@
-/* /src/styles/styles.css */
 
-/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,25 +17,24 @@ h2, h3 {
   font-weight: 600;
 }
 
-/* Container Styles */
 .container {
   width: 80%;
   margin: 40px auto;
 }
 
 .login-container{
-  max-width: 400px; /* Increased width for the dashboard container */
+  max-width: 400px; 
   margin: 0 auto;
-  padding: 40px; /* Increased padding for more space inside */
+  padding: 40px; 
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-container {
-  max-width: 1100px; /* Increased width for the dashboard container */
+  max-width: 1100px; 
   margin: 0 auto;
-  padding: 40px; /* Increased padding for more space inside */
+  padding: 40px; 
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -55,7 +52,6 @@ h3 {
   font-size: 1.5rem;
 }
 
-/* Button Styles */
 button {
   padding: 12px 30px;
   margin: 10px 0;
@@ -76,7 +72,6 @@ button:focus {
   outline: none;
 }
 
-/* Login Page */
 .login-container form {
   display: flex;
   flex-direction: column;
@@ -133,7 +128,6 @@ button:focus {
   letter-spacing: 1px;
 }
 
-/* Table Styles for Paid Bills & Due Bills */
 table {
   width: 100%;
   margin-top: 30px;
@@ -185,7 +179,6 @@ td, th {
   white-space: nowrap;
 }
 
-/* List Styles */
 ul {
   list-style-type: none;
   padding: 0;
@@ -205,7 +198,6 @@ ul li:hover {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Media Queries for responsiveness */
 @media (max-width: 768px) {
   .container {
     width: 95%;
